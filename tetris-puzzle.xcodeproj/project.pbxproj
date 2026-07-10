@@ -25,6 +25,8 @@
 		BF0000000000000000000010 /* SavedGameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR0000000000000000000011 /* SavedGameStore.swift */; };
 		BF0000000000000000000011 /* ComboScoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR0000000000000000000012 /* ComboScoring.swift */; };
 		BF0000000000000000000012 /* ComboBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR0000000000000000000013 /* ComboBannerView.swift */; };
+		BF0000000000000000000013 /* GameCenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR0000000000000000000014 /* GameCenterService.swift */; };
+		BF0000000000000000000014 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR0000000000000000000015 /* GameCenterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		FR0000000000000000000011 /* SavedGameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGameStore.swift; sourceTree = "<group>"; };
 		FR0000000000000000000012 /* ComboScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboScoring.swift; sourceTree = "<group>"; };
 		FR0000000000000000000013 /* ComboBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBannerView.swift; sourceTree = "<group>"; };
+		FR0000000000000000000014 /* GameCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterService.swift; sourceTree = "<group>"; };
+		FR0000000000000000000015 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
 		FR0000000000000000000010 /* tetris-puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tetris-puzzle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,7 @@
 				FR0000000000000000000006 /* ScoreStore.swift */,
 				FR0000000000000000000011 /* SavedGameStore.swift */,
 				FR0000000000000000000012 /* ComboScoring.swift */,
+				FR0000000000000000000014 /* GameCenterService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 				FR000000000000000000000C /* PieceShapeView.swift */,
 				FR000000000000000000000D /* ScoreboardView.swift */,
 				FR0000000000000000000013 /* ComboBannerView.swift */,
+				FR0000000000000000000015 /* GameCenterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 				BF0000000000000000000010 /* SavedGameStore.swift in Sources */,
 				BF0000000000000000000011 /* ComboScoring.swift in Sources */,
 				BF0000000000000000000012 /* ComboBannerView.swift in Sources */,
+				BF0000000000000000000013 /* GameCenterService.swift in Sources */,
+				BF0000000000000000000014 /* GameCenterView.swift in Sources */,
 				BF0000000000000000000007 /* HomeView.swift in Sources */,
 				BF0000000000000000000008 /* GameView.swift in Sources */,
 				BF0000000000000000000009 /* GameOverView.swift in Sources */,

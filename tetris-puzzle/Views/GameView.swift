@@ -3,6 +3,7 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var scoreStore: ScoreStore
     @EnvironmentObject var savedGameStore: SavedGameStore
+    @EnvironmentObject var gameCenter: GameCenterService
     @ObservedObject var game: GameState
     let onExit: () -> Void
 
@@ -123,6 +124,7 @@ struct GameView: View {
         .onChange(of: game.isGameOver) { _, newValue in
             if newValue, !savedGameOver {
                 scoreStore.add(score: game.score)
+                gameCenter.submit(score: game.score)
                 savedGameStore.clear()
                 savedGameOver = true
             }

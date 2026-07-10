@@ -2,10 +2,13 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var scoreStore: ScoreStore
+    @EnvironmentObject var gameCenter: GameCenterService
     let hasSavedGame: Bool
     let savedScore: Int
     let onContinue: () -> Void
     let onNewGame: () -> Void
+
+    @State private var showLeaderboard = false
 
     var body: some View {
         ZStack {
@@ -20,6 +23,10 @@ struct HomeView: View {
                         savedGameActions
                     } else {
                         newGameButton(title: "Play", icon: "play.fill", action: onNewGame)
+                    }
+
+                    if gameCenter.isAuthenticated {
+                        leaderboardButton
                     }
 
                     ScoreboardView(
@@ -52,6 +59,34 @@ struct HomeView: View {
                 .padding(.bottom, 24)
             }
         }
+        .sheet(isPresented: $showLeaderboard) {
+            GameCenterView()
+                .ignoresSafeArea()
+        }
+    }
+
+    private var leaderboardButton: some View {
+        Button {
+            showLeaderboard = true
+        } label: {
+            HStack(spacing: 8) {
+                Image(systemName: "trophy.fill")
+                Text("Global leaderboard")
+                    .font(.subheadline.weight(.semibold))
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Theme.surface)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .stroke(Theme.gridLine.opacity(0.5), lineWidth: 1)
+                    )
+            )
+            .foregroundStyle(Theme.accent)
+        }
+        .padding(.horizontal, 4)
     }
 
     private var savedGameActions: some View {

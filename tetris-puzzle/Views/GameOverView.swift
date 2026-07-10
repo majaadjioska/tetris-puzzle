@@ -2,9 +2,12 @@ import SwiftUI
 
 struct GameOverOverlay: View {
     @EnvironmentObject var scoreStore: ScoreStore
+    @EnvironmentObject var gameCenter: GameCenterService
     let score: Int
     let onPlayAgain: () -> Void
     let onHome: () -> Void
+
+    @State private var showLeaderboard = false
 
     var body: some View {
         ZStack {
@@ -83,6 +86,25 @@ struct GameOverOverlay: View {
                                 .foregroundStyle(.white)
                         }
 
+                        if gameCenter.isAuthenticated {
+                            Button {
+                                showLeaderboard = true
+                            } label: {
+                                HStack(spacing: 8) {
+                                    Image(systemName: "trophy.fill")
+                                    Text("Global leaderboard")
+                                        .font(.subheadline.weight(.semibold))
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .stroke(Theme.gridLine.opacity(0.6), lineWidth: 1)
+                                )
+                                .foregroundStyle(Theme.accent)
+                            }
+                        }
+
                         Button(action: onHome) {
                             Text("Back to menu")
                                 .font(.subheadline.weight(.semibold))
@@ -106,6 +128,10 @@ struct GameOverOverlay: View {
                 .padding(.horizontal, 18)
                 .padding(.vertical, 30)
             }
+        }
+        .sheet(isPresented: $showLeaderboard) {
+            GameCenterView()
+                .ignoresSafeArea()
         }
     }
 
