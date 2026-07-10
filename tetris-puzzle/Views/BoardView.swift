@@ -8,6 +8,7 @@ struct BoardView: View {
     let previewOriginCol: Int
     let previewIsValid: Bool
     let previewIsVisible: Bool
+    var clearPreviewCells: Set<Cell> = []
 
     private var boardSide: CGFloat {
         cellSize * CGFloat(GameState.boardSize)
@@ -21,6 +22,11 @@ struct BoardView: View {
 
             cellsGrid
 
+            if previewIsVisible, !clearPreviewCells.isEmpty {
+                clearHighlightOverlay
+                    .transition(.opacity)
+            }
+
             if previewIsVisible, let previewShape {
                 piecePreviewOverlay(shape: previewShape)
                     .transition(.opacity)
@@ -33,6 +39,32 @@ struct BoardView: View {
         .animation(.easeOut(duration: 0.08), value: previewOriginRow)
         .animation(.easeOut(duration: 0.08), value: previewOriginCol)
         .animation(.easeOut(duration: 0.08), value: previewIsValid)
+        .animation(.easeOut(duration: 0.12), value: clearPreviewCells)
+    }
+
+    private var clearHighlightOverlay: some View {
+        ZStack(alignment: .topLeading) {
+            ForEach(Array(clearPreviewCells), id: \.self) { cell in
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [Theme.accent, Theme.accent.opacity(0.85)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4, style: .continuous)
+                            .stroke(Color.white.opacity(0.9), lineWidth: 2)
+                    )
+                    .frame(width: cellSize - 2, height: cellSize - 2)
+                    .offset(
+                        x: CGFloat(cell.col) * cellSize + 1,
+                        y: CGFloat(cell.row) * cellSize + 1
+                    )
+            }
+        }
+        .allowsHitTesting(false)
     }
 
     private func piecePreviewOverlay(shape: PieceShape) -> some View {

@@ -54,7 +54,8 @@ struct GameView: View {
                         previewOriginRow: preview.originRow,
                         previewOriginCol: preview.originCol,
                         previewIsValid: preview.isValid,
-                        previewIsVisible: preview.isOverBoard
+                        previewIsVisible: preview.isOverBoard,
+                        clearPreviewCells: preview.clearCells
                     )
                     .frame(maxWidth: .infinity)
 
@@ -141,7 +142,7 @@ struct GameView: View {
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
                 .background(
-                    Capsule().fill(Color.white.opacity(0.6))
+                    Capsule().fill(Theme.surface)
                 )
             }
             .accessibilityLabel("Home")
@@ -193,13 +194,15 @@ struct GameView: View {
         var originCol: Int
         var isValid: Bool
         var isOverBoard: Bool
+        var clearCells: Set<Cell>
 
         static let hidden = PreviewState(
             shape: nil,
             originRow: 0,
             originCol: 0,
             isValid: false,
-            isOverBoard: false
+            isOverBoard: false,
+            clearCells: []
         )
     }
 
@@ -289,13 +292,17 @@ struct GameView: View {
 
         let snap = snapRowCol(for: piece, finger: location, cellSize: cellSize, boardRect: boardRect)
         let isValid = game.previewCells(piece.shape, atRow: snap.row, col: snap.col) != nil
+        let clearCells = isValid
+            ? game.cellsClearedIfPlaced(piece.shape, atRow: snap.row, col: snap.col)
+            : []
 
         return PreviewState(
             shape: piece.shape,
             originRow: snap.row,
             originCol: snap.col,
             isValid: isValid,
-            isOverBoard: true
+            isOverBoard: true,
+            clearCells: clearCells
         )
     }
 

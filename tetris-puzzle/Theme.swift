@@ -1,20 +1,29 @@
 import SwiftUI
 
 enum Theme {
-    static let background = Color(red: 0.96, green: 0.97, blue: 0.95)
-    static let boardBackground = Color(red: 0.91, green: 0.94, blue: 0.91)
-    static let cellEmpty = Color(red: 0.87, green: 0.91, blue: 0.87)
-    static let cellEmptyAlt = Color(red: 0.83, green: 0.88, blue: 0.84)
-    static let gridLine = Color(red: 0.52, green: 0.62, blue: 0.55)
-    static let gridLineStrong = Color(red: 0.22, green: 0.38, blue: 0.30)
+    // Backgrounds
+    static let background = Color(red: 0.047, green: 0.086, blue: 0.067)
+    static let boardBackground = Color(red: 0.078, green: 0.129, blue: 0.102)
+    static let surface = Color(red: 0.114, green: 0.176, blue: 0.141)
 
-    static let accent = Color(red: 0.05, green: 0.55, blue: 0.42)
-    static let accentDeep = Color(red: 0.04, green: 0.40, blue: 0.30)
+    // Empty board cells (subtle checkerboard tone)
+    static let cellEmpty = Color(red: 0.110, green: 0.161, blue: 0.129)
+    static let cellEmptyAlt = Color(red: 0.086, green: 0.137, blue: 0.110)
 
-    static let textPrimary = Color(red: 0.14, green: 0.22, blue: 0.18)
-    static let textSecondary = Color(red: 0.36, green: 0.45, blue: 0.40)
+    // Grid lines
+    static let gridLine = Color(red: 0.278, green: 0.396, blue: 0.337)
+    static let gridLineStrong = Color(red: 0.376, green: 0.522, blue: 0.443)
 
-    static let danger = Color(red: 0.78, green: 0.34, blue: 0.30)
+    // Accent / brand green
+    static let accent = Color(red: 0.204, green: 0.725, blue: 0.553)
+    static let accentDeep = Color(red: 0.157, green: 0.615, blue: 0.463)
 
-    static let pieceFill = Color(red: 0.06, green: 0.52, blue: 0.42)
+    // Text
+    static let textPrimary = Color(red: 0.945, green: 0.973, blue: 0.957)
+    static let textSecondary = Color(red: 0.549, green: 0.647, blue: 0.600)
+
+    static let danger = Color(red: 0.851, green: 0.427, blue: 0.380)
+
+    // Pieces
+    static let pieceFill = Color(red: 0.220, green: 0.733, blue: 0.561)
 }

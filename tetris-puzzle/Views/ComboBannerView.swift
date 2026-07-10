@@ -29,7 +29,7 @@ struct ComboBannerView: View {
         .padding(.vertical, 12)
         .background(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color.white.opacity(0.92))
+                .fill(Theme.surface)
                 .shadow(color: Theme.accent.opacity(0.22), radius: 12, x: 0, y: 6)
         )
         .overlay(

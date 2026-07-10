@@ -100,8 +100,8 @@ struct GameOverOverlay: View {
                 .padding(20)
                 .background(
                     RoundedRectangle(cornerRadius: 24, style: .continuous)
-                        .fill(Theme.background)
-                        .shadow(color: Color.black.opacity(0.25), radius: 24, x: 0, y: 12)
+                        .fill(Theme.surface)
+                        .shadow(color: Color.black.opacity(0.45), radius: 24, x: 0, y: 12)
                 )
                 .padding(.horizontal, 18)
                 .padding(.vertical, 30)

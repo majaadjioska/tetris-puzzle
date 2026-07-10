@@ -29,7 +29,7 @@ struct ScoreboardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color.white.opacity(0.7))
+                .fill(Theme.surface)
                 .overlay(
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
                         .stroke(highlight.opacity(0.18), lineWidth: 1)

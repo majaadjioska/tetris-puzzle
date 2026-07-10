@@ -10,7 +10,7 @@ struct tetris_puzzleApp: App {
             RootView()
                 .environmentObject(scoreStore)
                 .environmentObject(savedGameStore)
-                .preferredColorScheme(.light)
+                .preferredColorScheme(.dark)
         }
     }
 }

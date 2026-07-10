@@ -84,6 +84,51 @@ final class GameState: ObservableObject {
         return true
     }
 
+    /// Cells that would be cleared (full rows, columns, and 3×3 blocks) if this
+    /// shape were placed at the given origin. Empty if the placement is invalid
+    /// or completes nothing. Used to preview clears while dragging.
+    func cellsClearedIfPlaced(_ shape: PieceShape, atRow row: Int, col: Int) -> Set<Cell> {
+        guard canPlace(shape, atRow: row, col: col) else { return [] }
+
+        var filled = board.map { $0.map(\.filled) }
+        for cell in shape.cells {
+            filled[row + cell.row][col + cell.col] = true
+        }
+
+        var cleared = Set<Cell>()
+
+        for r in 0 ..< Self.boardSize where (0 ..< Self.boardSize).allSatisfy({ filled[r][$0] }) {
+            for c in 0 ..< Self.boardSize { cleared.insert(Cell(row: r, col: c)) }
+        }
+
+        for c in 0 ..< Self.boardSize where (0 ..< Self.boardSize).allSatisfy({ filled[$0][c] }) {
+            for r in 0 ..< Self.boardSize { cleared.insert(Cell(row: r, col: c)) }
+        }
+
+        let blocks = Self.boardSize / Self.blockSize
+        for br in 0 ..< blocks {
+            for bc in 0 ..< blocks {
+                let allFilled = (0 ..< Self.blockSize).allSatisfy { dr in
+                    (0 ..< Self.blockSize).allSatisfy { dc in
+                        filled[br * Self.blockSize + dr][bc * Self.blockSize + dc]
+                    }
+                }
+                if allFilled {
+                    for dr in 0 ..< Self.blockSize {
+                        for dc in 0 ..< Self.blockSize {
+                            cleared.insert(Cell(
+                                row: br * Self.blockSize + dr,
+                                col: bc * Self.blockSize + dc
+                            ))
+                        }
+                    }
+                }
+            }
+        }
+
+        return cleared
+    }
+
     func previewCells(_ shape: PieceShape, atRow row: Int, col: Int) -> Set<Cell>? {
         var result = Set<Cell>()
         for cell in shape.cells {
