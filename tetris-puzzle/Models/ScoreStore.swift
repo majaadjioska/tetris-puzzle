@@ -14,7 +14,7 @@ struct ScoreEntry: Codable, Identifiable, Equatable {
 }
 
 final class ScoreStore: ObservableObject {
-    private static let storageKey = "tetris_puzzle.scores.v1"
+    private static let storageKey = "jadeku.scores.v1"
     private let calendar: Calendar
 
     @Published private(set) var scores: [ScoreEntry] = []

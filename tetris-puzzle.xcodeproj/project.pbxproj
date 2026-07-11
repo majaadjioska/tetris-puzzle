@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,12 +45,12 @@
 		FR000000000000000000000D /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
 		FR000000000000000000000E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FR000000000000000000000F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FR0000000000000000000010 /* Jadeku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jadeku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FR0000000000000000000011 /* SavedGameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGameStore.swift; sourceTree = "<group>"; };
 		FR0000000000000000000012 /* ComboScoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboScoring.swift; sourceTree = "<group>"; };
 		FR0000000000000000000013 /* ComboBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBannerView.swift; sourceTree = "<group>"; };
 		FR0000000000000000000014 /* GameCenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterService.swift; sourceTree = "<group>"; };
 		FR0000000000000000000015 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
-		FR0000000000000000000010 /* tetris-puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tetris-puzzle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		GR0000000000000000000001 /* Root */ = {
+		GR0000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
 				GR0000000000000000000002 /* tetris-puzzle */,
@@ -126,7 +126,7 @@
 		GR0000000000000000000006 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FR0000000000000000000010 /* tetris-puzzle.app */,
+				FR0000000000000000000010 /* Jadeku.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 			);
 			name = "tetris-puzzle";
 			productName = "tetris-puzzle";
-			productReference = FR0000000000000000000010 /* tetris-puzzle.app */;
+			productReference = FR0000000000000000000010 /* Jadeku.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -349,24 +349,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "tetris-puzzle/Jadeku.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"tetris-puzzle/Preview Content\"";
+				DEVELOPMENT_TEAM = 9P8N3GMGW5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Jadeku;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tetrispuzzle.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voidfang.jadeku;
 				PRODUCT_MODULE_NAME = tetris_puzzle;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jadeku;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -378,24 +382,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "tetris-puzzle/Jadeku.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"tetris-puzzle/Preview Content\"";
+				DEVELOPMENT_TEAM = 9P8N3GMGW5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Jadeku;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tetrispuzzle.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voidfang.jadeku;
 				PRODUCT_MODULE_NAME = tetris_puzzle;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Jadeku;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

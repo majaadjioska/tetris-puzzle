@@ -27,7 +27,7 @@ struct SavedGameSnapshot: Codable, Equatable {
 }
 
 final class SavedGameStore: ObservableObject {
-    private static let storageKey = "tetris_puzzle.saved_game.v1"
+    private static let storageKey = "jadeku.saved_game.v1"
 
     @Published private(set) var hasUnfinishedGame = false
     @Published private(set) var savedScore = 0

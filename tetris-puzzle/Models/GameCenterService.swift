@@ -13,9 +13,9 @@ import UIKit
 @MainActor
 final class GameCenterService: ObservableObject {
     enum LeaderboardID {
-        static let allTime = "block_puzzle_alltime"
-        static let weekly = "block_puzzle_weekly"
-        static let daily = "block_puzzle_daily"
+        static let allTime = "jadeku_alltime"
+        static let weekly = "jadeku_weekly"
+        static let daily = "jadeku_daily"
 
         static var all: [String] { [allTime, weekly, daily] }
     }

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "TG0000000000000000000001"
-               BuildableName = "tetris-puzzle.app"
+               BuildableName = "Jadeku.app"
                BlueprintName = "tetris-puzzle"
                ReferencedContainer = "container:tetris-puzzle.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "TG0000000000000000000001"
-            BuildableName = "tetris-puzzle.app"
+            BuildableName = "Jadeku.app"
             BlueprintName = "tetris-puzzle"
             ReferencedContainer = "container:tetris-puzzle.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "TG0000000000000000000001"
-            BuildableName = "tetris-puzzle.app"
+            BuildableName = "Jadeku.app"
             BlueprintName = "tetris-puzzle"
             ReferencedContainer = "container:tetris-puzzle.xcodeproj">
          </BuildableReference>

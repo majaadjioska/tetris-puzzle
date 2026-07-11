@@ -143,7 +143,7 @@ struct HomeView: View {
                 .font(.system(size: 38, weight: .semibold))
                 .foregroundStyle(Theme.accent)
 
-            Text("Block Puzzle")
+            Text("Jadeku")
                 .font(.system(size: 34, weight: .heavy, design: .rounded))
                 .foregroundStyle(Theme.textPrimary)
 

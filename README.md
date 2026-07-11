@@ -1,6 +1,6 @@
-# Block Puzzle (tetris-puzzle)
+# Jadeku
 
-A calm 9×9 block puzzle iOS game built with SwiftUI. Drag Woodoku-style pieces onto the board, clear full rows, columns, or 3×3 blocks, and play as long as you can fit pieces.
+A calm 9×9 block puzzle iOS game built with SwiftUI, published by voidfang. Drag Woodoku-style pieces onto the board, clear full rows, columns, or 3×3 blocks, and play as long as you can fit pieces.
 
 ## Features
 
@@ -57,5 +57,6 @@ tetris-puzzle/
 
 ## Notes
 
-- Scores are stored in `UserDefaults` under the key `tetris_puzzle.scores.v1`. Delete the app or call `ScoreStore.clearAll()` to reset.
-- The bundle identifier is `com.tetrispuzzle.app`. Change it in target settings to use your own.
+- Scores are stored in `UserDefaults` under the key `jadeku.scores.v1`. Delete the app or call `ScoreStore.clearAll()` to reset.
+- The bundle identifier is `com.voidfang.jadeku`.
+- Game Center leaderboard IDs: `jadeku_alltime` (classic), `jadeku_weekly` and `jadeku_daily` (recurring).
