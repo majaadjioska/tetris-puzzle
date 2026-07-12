@@ -88,8 +88,29 @@ enum PieceLibrary {
         PieceShape([(0, 0), (0, 1), (1, 1), (2, 1)]),
     ]
 
+    /// Selection weight per shape. Bigger, more awkward pieces are favored to
+    /// raise difficulty; tiny pieces (1–2 cells) are rare so the board fills up.
+    private static func weight(for shape: PieceShape) -> Int {
+        switch shape.cellCount {
+        case 1: return 1
+        case 2: return 2
+        case 3: return 4
+        case 4: return 7
+        default: return 9 // 5-cell pieces (lines, big L, plus)
+        }
+    }
+
+    private static let weighted: [(shape: PieceShape, weight: Int)] =
+        shapes.map { ($0, weight(for: $0)) }
+    private static let totalWeight: Int = weighted.reduce(0) { $0 + $1.weight }
+
     static func random() -> PieceShape {
-        shapes.randomElement()!
+        var roll = Int.random(in: 0 ..< totalWeight)
+        for entry in weighted {
+            if roll < entry.weight { return entry.shape }
+            roll -= entry.weight
+        }
+        return shapes[0]
     }
 }
 

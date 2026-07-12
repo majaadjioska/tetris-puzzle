@@ -28,7 +28,8 @@ final class GameState: ObservableObject {
 
     init() {
         board = Self.emptyBoard()
-        trayPieces = (0 ..< 3).map { _ in Piece.random() }
+        trayPieces = []
+        trayPieces = generateTrayPieces()
     }
 
     private static func emptyBoard() -> [[BoardCell]] {
@@ -41,7 +42,7 @@ final class GameState: ObservableObject {
     func newGame() {
         withAnimation(.easeInOut(duration: 0.2)) {
             board = Self.emptyBoard()
-            trayPieces = (0 ..< 3).map { _ in Piece.random() }
+            trayPieces = generateTrayPieces()
             score = 0
             isGameOver = false
             lastBonusMessage = nil
@@ -274,7 +275,7 @@ final class GameState: ObservableObject {
     private func finalizeMove() {
         if trayPieces.allSatisfy({ $0 == nil }) {
             withAnimation(.easeInOut(duration: 0.2)) {
-                trayPieces = (0 ..< 3).map { _ in Piece.random() }
+                trayPieces = generateTrayPieces()
             }
         }
         if !anyRemainingPieceFits() {
@@ -336,6 +337,14 @@ final class GameState: ObservableObject {
         return ClearResult(cells: cells, unitCount: unitCount)
     }
 
+    /// Whether the tray piece at `index` can be legally placed anywhere on the
+    /// current board. Used by the tray UI to gray out dead pieces.
+    func trayPieceFits(at index: Int) -> Bool {
+        guard index >= 0, index < trayPieces.count,
+              let piece = trayPieces[index] else { return false }
+        return pieceFitsSomewhere(piece.shape)
+    }
+
     private func anyRemainingPieceFits() -> Bool {
         let remaining = trayPieces.compactMap { $0 }
         guard !remaining.isEmpty else { return true }
@@ -343,6 +352,23 @@ final class GameState: ObservableObject {
             if pieceFitsSomewhere(piece.shape) { return true }
         }
         return false
+    }
+
+    /// Builds a set of 3 pieces. If a purely random set can't be placed at all
+    /// on the current board, one slot is swapped for a shape that does fit — so
+    /// the player always gets at least one legal move on a fresh set, while the
+    /// board can still fill up and end the game naturally within a set.
+    private func generateTrayPieces() -> [Piece?] {
+        var pieces: [Piece] = (0 ..< 3).map { _ in Piece.random() }
+
+        if !pieces.contains(where: { pieceFitsSomewhere($0.shape) }) {
+            let fitting = PieceLibrary.shapes.filter { pieceFitsSomewhere($0) }
+            if let fit = fitting.randomElement() {
+                pieces[Int.random(in: 0 ..< 3)] = Piece(shape: fit, colorIndex: 0)
+            }
+        }
+
+        return pieces.map { Optional($0) }
     }
 
     private func pieceFitsSomewhere(_ shape: PieceShape) -> Bool {

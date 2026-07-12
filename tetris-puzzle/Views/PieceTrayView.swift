@@ -29,19 +29,22 @@ struct PieceTrayView: View {
                 )
 
             if let piece = game.trayPieces[i] {
+                let fits = game.trayPieceFits(at: i)
                 PieceShapeView(
                     shape: piece.shape,
-                    color: piece.color,
+                    color: fits ? piece.color : Theme.gridLine,
                     cellSize: trayCellSize
                 )
-                .opacity(draggingPieceIndex == i ? 0.25 : 1)
+                .saturation(fits ? 1 : 0)
+                .opacity(draggingPieceIndex == i ? 0.25 : (fits ? 1 : 0.35))
             }
         }
         .contentShape(Rectangle())
         .gesture(
             DragGesture(minimumDistance: 0, coordinateSpace: .named(coordinateSpaceName))
                 .onChanged { value in
-                    guard game.trayPieces[i] != nil else { return }
+                    guard game.trayPieces[i] != nil,
+                          game.trayPieceFits(at: i) else { return }
                     onDragChanged(i, value.location)
                 }
         )
